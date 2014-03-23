@@ -1,13 +1,13 @@
 # Install the atlassian sdk
 #
 class atlassian_sdk {
-  exec { 'add atlassian tap to hombrew':
-    command => 'brew tap atlassian/tap'
+  homebrew::tap { 'add atlassian tap to homebrew':
+    source => 'atlassian/tap'
   }
 
   package { 'atlassian/tap/atlassian-plugin-sdk':
     ensure   => 'latest',
     provider => 'homebrew',
-    require  => Exec['add atlassian tap to hombrew']
+    require  => Homebrew::Tap['add atlassian tap to homebrew']
   }
 }
